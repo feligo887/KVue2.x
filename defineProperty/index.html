@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>defineProperty</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    let data = {
+        name: 'man',
+        height: 185
+    };
+
+    const definePropertyFn = (target, key, value) => {
+
+        Object.defineProperty(target, key, {
+            get() {
+                return value
+            },
+            set(newValue) {
+                if (value !== newValue) {
+                    value = newValue;
+                    console.log('更新数据：', data);
+                }
+            },
+        })
+    }
+
+    const observer = (target) => {
+
+
+        if (typeof target !== 'object') return target;
+
+        console.log(typeof target);
+
+        for (let key in target) {
+            definePropertyFn(target, key, target[key]);
+        }
+    }
+    observer(data);
+
+
+    data.height = 180;
+
+</script>
+
+</html>
