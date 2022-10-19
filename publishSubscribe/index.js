@@ -60,7 +60,7 @@ class PublishSubscribe {
 const getUUID = () => {
     const time = new Date().toLocaleTimeString();
     const number = Math.random() * 1000000000;
-    return `${time}:${Math.round(number)}` ;
+    return `${time}:${Math.round(number)}`;
 
 }
 
